@@ -1,0 +1,19 @@
+.intructions {
+   text-align: center;
+    margin: 10px 200px;
+    border: 3px solid black;
+}
+
+.start-btn {
+  background: yellow;
+  border-color: yellow;
+  font-size: 24px;
+  margin: 0 8px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: black;
+  border-radius: 10%;
+}
+.start-btn:hover {
+    background-color: white;
+}
