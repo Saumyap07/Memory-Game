@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 
 function Numbers() {
     const [randomNumbers, setRandomNumbers] = useState('');
+    const [guessNumbers, setGuessNumbers] = useState('');
+    const [timesUp, setTimesUp] = useState(false);
+
     let tmpString = []
 
     useEffect(() => {
@@ -13,21 +16,44 @@ function Numbers() {
             setRandomNumbers(tmpString)
         }
 
+        if (!timesUp) {
+            setTimeout(() => {
+                setTimesUp(true)
+            }, 5000)
+        }
+
     }, [])
+    const handleChange = (e) => {
+       setGuessNumbers(e.target.value);
+      };
+      if(guessNumbers == randomNumbers){
+        <div>
+            
+        </div>
+      }
 
     console.log(randomNumbers);
     return (
         <>
-        <div className="numbers">
-            <h2><strong>Remember this number</strong></h2>
-            <p><strong>{randomNumbers}</strong></p>
+        { !timesUp ?
+            <div className="numbers">
+                <h2><strong>Remember this number</strong></h2>
+                <p><strong>{randomNumbers}</strong></p>
+            </div>
+            
+            : <div className="guess">
+            <h2><strong>What was the number?</strong></h2>
+            <h4 className="sumbit">Press enter to sumbit</h4>
+            <input className="input" 
+
+            value={guessNumbers}
+            onChange ={handleChange}
+            onKeyDown={(e) => {
+                if (e.key == 'Enter') console.log(guessNumbers)
+            }}/>
         </div>
-        <div className="guess">
-        <h2><strong>What was the number?</strong></h2>
-        <h4 className="sumbit">Press enter to sumbit</h4>
-        <input className="input"></input>
-    </div>
-    </>
+         }
+        </>
     )
 }
 

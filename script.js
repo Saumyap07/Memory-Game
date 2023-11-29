@@ -1,10 +1,10 @@
 let randomNumbers = "";
 let guessedNumbers = "";
-let Size = 3;
-let Level = 1;
-let Guess = 0;
-let Restart = 0;
-let Score = 0;
+let size = 3;
+let level = 1;
+let guess = 0;
+let randomestart = 0;
+let score = 0;
 
 function gameResults(Num) {
   let random = 0;
@@ -18,10 +18,9 @@ let startBtn = document.getElementById("start-btn")
 
 function main() {
   startBtn.addEventListener("click", function(){
+    console.log("hi")
+    console.log("rememeber this numbers:", randomNumbers)
 
-    function rememberNum(){
-      console.log("rememeber this numbers:", randomNumbers)
-    }
     setTimeout(function(){
       console.log("hi")
       //get the random numbers for the user then display the numbers 
@@ -35,3 +34,11 @@ function main() {
 main();
 
 
+function startRound(level, size) {
+  // initialize values for this round, eg. randomNumbers
+  // display those numbers to the user
+  // after 500ms hide numbers from user
+  // prompt user to guess numbers
+  // give user results of guess
+  // next round ?? try again
+}
