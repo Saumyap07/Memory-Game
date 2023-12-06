@@ -1,6 +1,11 @@
 import React from 'react'
 
-function Remember({randomNumbers}) {
+function Remember({randomNumbers,handleTimeUp}){
+
+    setTimeout(() => {
+        handleTimeUp()
+    }, 5000)
+
   return (
     <div className="numbers">
          <h2><strong>Remember this number</strong></h2>
