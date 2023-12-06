@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+
+let Score = 0;
+let Level = 0;
 function Numbers() {
     const [randomNumbers, setRandomNumbers] = useState('');
     const [guessNumbers, setGuessNumbers] = useState('');
@@ -26,11 +29,35 @@ function Numbers() {
     const handleChange = (e) => {
        setGuessNumbers(e.target.value);
       };
-      if(guessNumbers == randomNumbers){
-        <div>
-            
+
+      function Results (){
+        if(guessNumbers == randomNumbers){
+            Score += 10;
+            Level += 1;
+         return ( <div>
+            <h2>Number</h2>
+            <p>{randomNumbers}</p>
+            <h2>Your Number</h2>
+            <p>{guessNumbers}</p>
+            <p>Score : {Score}</p>
+            <p>Level {Level}</p>
         </div>
+        ) 
+        }
+        if(guessNumbers != randomNumbers){
+            Level += 1;
+         return ( <div>
+            <h2>Number</h2>
+            <p>{randomNumbers}</p>
+            <h2>Your Number</h2>
+            <p>{guessNumbers}</p>
+            <p>Score : {Score}</p>
+            <p>Level {Level}</p>
+        </div>
+        ) 
+        }
       }
+     
 
     console.log(randomNumbers);
     return (
