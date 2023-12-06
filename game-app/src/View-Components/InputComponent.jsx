@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function InputComponent({handleGuess}) {
+function InputComponent({ handleGuess }) {
   return (
     <div className="guess">
       <h2><strong>What was the number?</strong></h2>

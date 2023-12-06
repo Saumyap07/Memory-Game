@@ -16,7 +16,7 @@
  background: yellow;
  border-color: yellow;
  font-size: 24px;
- margin: 0 8px;
+ margin: 15px 8px;
  letter-spacing: 1px;
  padding: 6px 12px;
  color: black;
@@ -63,6 +63,50 @@
   width: 30rem;
   padding: 10px;
   margin-bottom: 1rem;
-
-
 }
+
+.Win {
+  text-align: center;
+  font-size: 40px;
+  margin: 200px;
+  border: 3px solid white;
+  margin-top: 25%;
+}
+
+.Win-btn {
+  background: yellow;
+  border-color: yellow;
+  font-size: 24px;
+  margin: 15px 8px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: black;
+  border-radius: 10%;
+ }
+
+ .Win-btn:hover {
+    background-color: white;
+ }
+
+.Lose {
+  text-align: center;
+  font-size: 40px;
+  margin: 200px;
+  border: 3px solid white;
+  margin-top: 25%;
+}
+
+.Lose-btn {
+  background: yellow;
+  border-color: yellow;
+  font-size: 24px;
+  margin: 15px 8px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: black;
+  border-radius: 10%;
+ }
+
+ .Lose-btn:hover {
+    background-color: white;
+ }
