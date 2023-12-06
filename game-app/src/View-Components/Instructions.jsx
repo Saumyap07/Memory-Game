@@ -1,17 +1,7 @@
+import React from 'react'
 
-import './App.css';
-import Numbers from './Numbers';
-import { useState } from "react";
-
-function App() {
-
-  const [remember, setRemeber] = useState(0);
-  const handleClick = () => {
-    setRemeber(1)
-  }
-
-  if (remember == 0) {
-    return (
+function Instructions({handleClick}) {
+  return (
       <div className="intructions">
         <p><strong>Memory Game</strong> <br />
           Lets see how good is your Memory<br /><br />
@@ -26,13 +16,5 @@ function App() {
       </div>
     )
   }
-  else{
-    return <Numbers/>
-  }
 
-}
-
-
-
-
-export default App;
+export default Instructions
