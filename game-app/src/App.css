@@ -1,16 +1,27 @@
 * {
-  background-color: blue;
   color: white;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 100vh;
+  background-image: url("https://www.americanweatherstar.com/wp-content/uploads/2020/02/lead-generation-successful-leads-numbers-game-feature-img.png");
+}
+.content-container{
+  text-align: center;
+  border: 3px solid white;
+  font-size: 40px;
+  background-color: blue;
+  max-width: 1200px;
+  padding: 1rem 2rem;
 }
 
-.intructions {
-  text-align: center;
-   margin: 200px;
-   border: 3px solid white;
-   margin-top: 25%;
-   font-size: 24px;
+.instructions {
+  font-size: 24px;
 }
+
 
 .start-btn {
  background: yellow;
@@ -26,23 +37,11 @@
    background-color: white;
 }
 
-.numbers {
-  text-align: center;
-  font-size: 40px;
-  margin: 200px;
-  border: 3px solid white;
-  margin-top: 25%;
-}
 .guess {
-  text-align: center;
-  font-size: 40px;
-  margin: 200px;
-  border: 3px solid white;
   display: flex;
   gap: 2rem;
   flex-direction: column;
   align-items: center;
-  /* background-color: red; */
 }
 
 .guess h2 {
@@ -59,18 +58,16 @@
   opacity: 80%;
 }
 
+
 .input {
   width: 30rem;
   padding: 10px;
   margin-bottom: 1rem;
+  color: black;
+  font-size: 20px;
 }
-
-.Win {
-  text-align: center;
-  font-size: 40px;
-  margin: 200px;
-  border: 3px solid white;
-  margin-top: 25%;
+.random{
+  font-size: 20px;
 }
 
 .Win-btn {
@@ -88,14 +85,6 @@
     background-color: white;
  }
 
-.Lose {
-  text-align: center;
-  font-size: 40px;
-  margin: 200px;
-  border: 3px solid white;
-  margin-top: 25%;
-}
-
 .Lose-btn {
   background: yellow;
   border-color: yellow;
@@ -110,3 +99,9 @@
  .Lose-btn:hover {
     background-color: white;
  }
+
+ .timer-bar {
+  height: 10px;
+  background-color: #f00; /* Set your desired background color */
+  transition: width 1s linear; /* Add a transition for smooth animation */
+}

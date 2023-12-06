@@ -45,7 +45,7 @@ setCurrentView("Instructions")
   }
   
   return (
-    <div> 
+    <div  className='content-container'> 
       {currentView === "Instructions" && (
         <Instructions handleClick={() => setCurrentView("Remember")}/>
       )}

@@ -1,15 +1,14 @@
 import React from 'react'
+import Timer from './Timer.js'
 
 function Remember({randomNumbers,handleTimeUp}){
-
-    setTimeout(() => {
-        handleTimeUp()
-    }, 5000)
 
   return (
     <div className="numbers">
          <h2><strong>Remember this number</strong></h2>
-         <p><strong>{randomNumbers}</strong></p>
+         <p className='random'><strong>{randomNumbers}</strong></p>
+         <Timer totalTime={5} handleTimeUp={handleTimeUp}/>
+
     </div>
   )
 }
