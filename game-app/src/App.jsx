@@ -8,6 +8,14 @@ import InputComponent from './View-Components/InputComponent';
 import Results from './View-Components/Results';
 import ScoreBoard from './View-Components/ScoreBoard';
 
+let MockHighscores = [
+  { name: 'Sam', level: 8, score: 550069 },
+  { name: 'Steve', level: 7, score: 550 },
+  { name: 'Jack', level: 5, score: 69 },
+  { name: 'Simon', level: 8, score: 5500 },
+]
+
+
 const genrateRandomNum = (digitNum) => {
   let tmpString = "";
   for (let i = 0; i < digitNum; i++) {
@@ -18,11 +26,12 @@ return tmpString
 }
 
 function App() {
-  const [currentView,setCurrentView] = useState("ScoreBoard")
+  const [currentView,setCurrentView] = useState("Instructions")
   const [randomNumbers, setRandomNumbers] = useState(genrateRandomNum(1));
   const [guessNumbers, setGuessNumbers] = useState('1');
   const [score,setScore] = useState(0)
   const [level,setLevel] = useState(0)
+  const [highScores, setHighScores] = useState(MockHighscores);
 
   const onGuess = (userGuess) => {
     setGuessNumbers(userGuess)
@@ -58,10 +67,10 @@ setCurrentView("Instructions")
       )}
        {currentView === "Results" && (
         <Results handleWin={handleNext} handleLose={onLose} guessNumbers={guessNumbers} 
-        score={score} level={level} randomNumbers={randomNumbers}/>
+        score={score} level={level} randomNumbers={randomNumbers} handleScore={() => setCurrentView('ScoreBoard')}/>
       )}
       {currentView === "ScoreBoard" && (
-        <ScoreBoard />
+        <ScoreBoard score={score} highScores={highScores} />
       )}
     </div>
     

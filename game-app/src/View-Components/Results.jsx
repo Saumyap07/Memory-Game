@@ -1,6 +1,6 @@
 
 
-function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, level }) {
+function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, level, handleScore }) {
 
     if (guessNumbers == randomNumbers) {
         return (
@@ -25,6 +25,8 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                 <p>Score : {score}</p>
                 <p>Level {level}</p>
                 <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Try Again</button>
+                <button className="Lose-btn" id="Lose-btn" onClick={handleScore}>Scoreboard</button>
+                {/* To do: Add High score component here */}
             </div>
         )
     }

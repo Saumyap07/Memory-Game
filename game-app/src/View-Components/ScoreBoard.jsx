@@ -1,6 +1,8 @@
-let HighScore = []
+import { useState } from "react";
 
-function ScoreBoard({score}) {
+
+function ScoreBoard({score, highScores}) {
+    console.log(highScores)
     return (
         <>
         <div>
@@ -15,66 +17,13 @@ function ScoreBoard({score}) {
                     <th>Score</th>
                     <th>Level</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Saumya</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Saumya Patel</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+
+                {highScores.map((highScore, index) => (<tr>
+                    <td>{index + 1}</td>
+                    <td>{highScore.name}</td>
+                    <td>{highScore.score}</td>
+                    <td>{highScore.level}</td>
+                </tr>))}
             </tbody>
         </table>
         </> 
