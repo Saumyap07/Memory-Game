@@ -1,22 +1,27 @@
 import { useState } from "react"
 
 
-function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, level, goToScoreBoard, highScores }) {
+function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, level, goToScoreBoard, highScores,
+                   updateHighScores  }) {
 
     const [playerName, setPlayerName] = useState("")
-    function handleNewHighScore(e) {
-        e.preventDefault()
+    function handleNewHighScore() {
         const newHighScore = {
             name:playerName,
             score,level
         }
         
         // to do post high score to backend
-
+        updateHighScores(newHighScore)
         console.log(newHighScore)
+        goToScoreBoard()
 
     }
-    const showHighScoreDialog = !highScores[9]|| score > highScores[9]
+
+    console.log("Results component")
+
+   
+
     if (guessNumbers == randomNumbers) {
         return (
             <div className="Win">
@@ -31,6 +36,8 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
         )
     }
     if (guessNumbers != randomNumbers) {
+        const showHighScoreDialog = !highScores[9]|| score > highScores[9];
+        console.log('lose view')
         return (
             <div className="Lose">
                 <h2>Number</h2>
@@ -44,12 +51,20 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                 {showHighScoreDialog && (
                     <dialog open>
                         <p>Congratulations you got an highscore</p>
-                        <form onSubmit={handleNewHighScore}>
-                            <p>Please enter your name to be on the scoreboard</p>
-                            <input name="playerName" className="input" autoFocus onChange={e => setPlayerName(e.target.value)} />
-                            <button className="sumbit-btn" type="sumbit">Sumbit</button>
-                            <button className="No-btn" onClick={goToScoreBoard}>No Thankyou</button>
-                        </form>
+                        <p>Please enter your name to be on the scoreboard</p>
+                        <input
+                            name="playerName"
+                            className="input"
+                            autoFocus
+                            onChange={e => setPlayerName(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key == 'Enter') {
+                                  handleNewHighScore()
+                                }
+                              }}     
+                        />
+                        <button className="sumbit-btn" type="button" onClick={handleNewHighScore}>Sumbit</button>
+                        <button className="No-btn" type="button" onClick={goToScoreBoard}>No Thankyou</button>
                     </dialog>
                 )}
             </div>

@@ -33,6 +33,9 @@ function App() {
   const [level,setLevel] = useState(0)
   const [highScores, setHighScores] = useState(MockHighscores);
 
+  const updateHighScores= (newHighScore)=>{
+    setHighScores(highScores => [...highScores,newHighScore])
+  }
   const onGuess = (userGuess) => {
     setGuessNumbers(userGuess)
   
@@ -68,7 +71,7 @@ setCurrentView("Instructions")
        {currentView === "Results" && (
         <Results handleWin={handleNext} handleLose={onLose} guessNumbers={guessNumbers} 
         score={score} level={level} randomNumbers={randomNumbers} goToScoreBoard={() => setCurrentView('ScoreBoard')}
-        highScores={highScores}/>
+        highScores={highScores} updateHighScores={updateHighScores}/>
       )}
       {currentView === "ScoreBoard" && (
         <ScoreBoard score={score} highScores={highScores} />
