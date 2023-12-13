@@ -16,7 +16,6 @@ const Timer = ({ totalTime, handleTimeUp }) => {
     if(timeLeft == -1){
       handleTimeUp()
     }
-    console.log(timeLeft)
 
   },[timeLeft])
 

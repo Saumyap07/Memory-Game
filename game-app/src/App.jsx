@@ -67,7 +67,8 @@ setCurrentView("Instructions")
       )}
        {currentView === "Results" && (
         <Results handleWin={handleNext} handleLose={onLose} guessNumbers={guessNumbers} 
-        score={score} level={level} randomNumbers={randomNumbers} handleScore={() => setCurrentView('ScoreBoard')}/>
+        score={score} level={level} randomNumbers={randomNumbers} goToScoreBoard={() => setCurrentView('ScoreBoard')}
+        highScores={highScores}/>
       )}
       {currentView === "ScoreBoard" && (
         <ScoreBoard score={score} highScores={highScores} />

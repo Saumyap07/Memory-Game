@@ -136,3 +136,36 @@ tbody{
   background-image: url('Picture/ScoreBoard.png');
   width: auto;
  }
+ dialog{
+  position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: auto;
+   background-color: green;
+   padding: 20px;
+   border: 1px solid black;
+ }
+ dialog::backdrop{
+  background-color: grey;
+ }
+ .sumbit-btn{
+  background: var(--Amber);
+  border-color: var(--Amber);
+  font-size: 24px;
+  margin: 15px 8px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: black;
+  border-radius: 10%;
+ }
+ .No-btn{
+  background: var(--Amber);
+  border-color: var(--Amber);
+  font-size: 24px;
+  margin: 15px 8px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  color: black;
+  border-radius: 10%;
+ }
