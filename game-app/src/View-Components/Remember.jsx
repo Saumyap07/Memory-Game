@@ -7,7 +7,7 @@ function Remember({randomNumbers,handleTimeUp}){
     <div className="numbers">
          <h2><strong>Remember this number</strong></h2>
          <p className='random'><strong>{randomNumbers}</strong></p>
-         <Timer totalTime={5} handleTimeUp={handleTimeUp}/>
+         <Timer totalTime={8} handleTimeUp={handleTimeUp}/>
 
     </div>
   )

@@ -1,9 +1,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+:root {
+  --Blue:#5F8EE6;
+  --Orange:#E5AF4A;
+  --Red:#FB5D62;
+  --Green:#45D142;
+  --Black:#040202;
+  --Amber:#F7CB2D;
+}
 
 body {
   margin: 0;
-  font-family:'Bebas Neue', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

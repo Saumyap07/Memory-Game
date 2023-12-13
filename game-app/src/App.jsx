@@ -6,6 +6,7 @@ import Instructions from './View-Components/Instructions';
 import Remember from './View-Components/Remember';
 import InputComponent from './View-Components/InputComponent';
 import Results from './View-Components/Results';
+import ScoreBoard from './View-Components/ScoreBoard';
 
 const genrateRandomNum = (digitNum) => {
   let tmpString = "";
@@ -17,7 +18,7 @@ return tmpString
 }
 
 function App() {
-  const [currentView,setCurrentView] = useState("Instructions")
+  const [currentView,setCurrentView] = useState("ScoreBoard")
   const [randomNumbers, setRandomNumbers] = useState(genrateRandomNum(1));
   const [guessNumbers, setGuessNumbers] = useState('1');
   const [score,setScore] = useState(0)
@@ -45,7 +46,7 @@ setCurrentView("Instructions")
   }
   
   return (
-    <div  className='content-container'> 
+    <div  className={`content-container ${currentView === "ScoreBoard" && "board"}`}> 
       {currentView === "Instructions" && (
         <Instructions handleClick={() => setCurrentView("Remember")}/>
       )}
@@ -58,6 +59,9 @@ setCurrentView("Instructions")
        {currentView === "Results" && (
         <Results handleWin={handleNext} handleLose={onLose} guessNumbers={guessNumbers} 
         score={score} level={level} randomNumbers={randomNumbers}/>
+      )}
+      {currentView === "ScoreBoard" && (
+        <ScoreBoard />
       )}
     </div>
     
