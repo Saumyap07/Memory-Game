@@ -5,6 +5,8 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                    updateHighScores  }) {
 
     const [playerName, setPlayerName] = useState("")
+    const [showScoreboard, setShowScoreboard] = useState(false);
+
     function handleNewHighScore() {
         const newHighScore = {
             name:playerName,
@@ -16,8 +18,7 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
         goToScoreBoard()
 
     }
-
-   
+    
 
     if (guessNumbers == randomNumbers) {
         return (
@@ -43,7 +44,7 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                 <p>Score : {score}</p>
                 <p>Level {level}</p>
                 <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Try Again</button>
-                <button className="Lose-btn" id="Lose-btn" onClick={goToScoreBoard}>Scoreboard</button>
+                <button className="Lose-btn" id="Lose-btn" onClick={() => setShowScoreboard(true)}>Scoreboard</button>
                 {showHighScoreDialog && (
                     <dialog open>
                         <p>Congratulations you got an highscore</p>
@@ -60,9 +61,14 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                               }}     
                         />
                         <button className="sumbit-btn" type="button" onClick={handleNewHighScore}>Sumbit</button>
-                        <button className="No-btn" type="button" onClick={goToScoreBoard}>No Thankyou</button>
+                        <button className="No-btn" type="button" onClick={() => setShowScoreboard(false)}>No Thankyou</button>
                     </dialog>
                 )}
+                {showScoreboard && (
+          <div>
+            {goToScoreBoard}
+          </div>
+        )}
             </div>
         )
     }

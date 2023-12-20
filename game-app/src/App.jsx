@@ -2,7 +2,7 @@
 import './App.css';
 import Numbers from './Numbers';
 import { initializeApp } from 'firebase/app';
-import { collection, getFirestore } from 'firebase/firestore';
+import {query, collection, orderBy, limit, getFirestore } from 'firebase/firestore';
 import { useState } from "react";
 import Instructions from './View-Components/Instructions';
 import Remember from './View-Components/Remember';
@@ -19,7 +19,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const HighscoresCollection = collection(db, 'Highscores')
 
-
+const highScoresQuery = query(
+  HighscoresCollection,
+  orderBy('score', 'desc'), // Order by 'score' in descending order
+  limit(10), // Limit the result to 10 documents
+);
 
 
 const genrateRandomNum = (digitNum) => {
@@ -37,7 +41,7 @@ function App() {
   const [guessNumbers, setGuessNumbers] = useState('1');
   const [score,setScore] = useState(0)
   const [level,setLevel] = useState(0)
-  const [highScores, loading, error] =useCollection(HighscoresCollection);
+  const [highScores, loading, error] =useCollection(highScoresQuery);
 
   const updateHighScores= (newHighScore)=>{
 

@@ -13,7 +13,9 @@
   text-align: center;
   border: 3px solid white;
   font-size: 40px;
-  background-image: url('Picture/ScoreBoard.png');
+  background-image: url('Picture/blue.png');
+  background-size: cover;
+  background-position: center;
   max-width: 1200px;
   padding: 1rem 2rem;
 }
@@ -169,3 +171,7 @@ tbody{
   color: black;
   border-radius: 10%;
  }
+/* 
+ .incorrect {
+  text-decoration: line-through;
+} */

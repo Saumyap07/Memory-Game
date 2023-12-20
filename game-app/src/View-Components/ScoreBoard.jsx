@@ -9,7 +9,6 @@ function ScoreBoard({score, highScores,}) {
         }
       });
 
-      highScoreData.sort((a, b) => b.score - a.score);
 
     return (
         <>
