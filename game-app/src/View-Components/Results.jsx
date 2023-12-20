@@ -1,11 +1,15 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
-function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, level, goToScoreBoard, highScores,
-                   updateHighScores  }) {
+function Results({
+    guessNumbers, randomNumbers,
+    handleWin, handleLose, score, level,
+    goToScoreBoard, highScores, updateHighScores 
+ }) {
 
     const [playerName, setPlayerName] = useState("")
     const [showScoreboard, setShowScoreboard] = useState(false);
+    const [showHighScoreDialog, setShowHighScoreDialog]= useState(false);
 
     function handleNewHighScore() {
         const newHighScore = {
@@ -18,6 +22,12 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
         goToScoreBoard()
 
     }
+    useEffect(() => {
+        const lowestHighScore = highScores.docs[9]?.data();
+        const shouldShowHighScore = highScores.docs.length < 10 || score > lowestHighScore.score;
+        console.log({lowestHighScore, shouldShowHighScore})
+        setShowHighScoreDialog(shouldShowHighScore);
+    }, [highScores, score])
     
 
     if (guessNumbers == randomNumbers) {
@@ -34,7 +44,7 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
         )
     }
     if (guessNumbers != randomNumbers) {
-        const showHighScoreDialog = !highScores[9]|| score > highScores[9];
+        
         return (
             <div className="Lose">
                 <h2>Number</h2>
@@ -44,7 +54,7 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                 <p>Score : {score}</p>
                 <p>Level {level}</p>
                 <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Try Again</button>
-                <button className="Lose-btn" id="Lose-btn" onClick={() => setShowScoreboard(true)}>Scoreboard</button>
+                <button className="Lose-btn" id="Lose-btn" onClick={goToScoreBoard}>Scoreboard</button>
                 {showHighScoreDialog && (
                     <dialog open>
                         <p>Congratulations you got an highscore</p>
@@ -61,14 +71,14 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
                               }}     
                         />
                         <button className="sumbit-btn" type="button" onClick={handleNewHighScore}>Sumbit</button>
-                        <button className="No-btn" type="button" onClick={() => setShowScoreboard(false)}>No Thankyou</button>
+                        <button className="No-btn" type="button" onClick={() => setShowHighScoreDialog(false)}>No Thankyou</button>
                     </dialog>
                 )}
-                {showScoreboard && (
+                {/* {showScoreboard && (
           <div>
             {goToScoreBoard}
           </div>
-        )}
+        )} */}
             </div>
         )
     }

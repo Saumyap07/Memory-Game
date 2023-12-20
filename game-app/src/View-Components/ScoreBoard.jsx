@@ -25,7 +25,8 @@ function ScoreBoard({score, highScores,}) {
                     <th>Level</th>
                 </tr>
 
-                {highScoreData.map((highscore, index) => (<tr>
+                {highScoreData.map((highscore, index) => (
+                <tr key={highscore.id}>
                     <td>{index + 1}</td>
                     <td>{highscore.name}</td>
                     <td>{highscore.score}</td>
