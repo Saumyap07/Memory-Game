@@ -45,12 +45,13 @@ function Results({
     }
     if (guessNumbers != randomNumbers) {
         
+       
         return (
             <div className="Lose">
                 <h2>Number</h2>
                 <p>{randomNumbers}</p>
                 <h2>Your Number</h2>
-                <p>{guessNumbers}</p>
+                <p><HasWrongAnswers guessNumbers={guessNumbers} randomNumbers={randomNumbers} /></p>
                 <p>Score : {score}</p>
                 <p>Level {level}</p>
                 <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Try Again</button>
@@ -86,3 +87,18 @@ function Results({
 }
 
 export default Results
+
+
+function HasWrongAnswers(props) {
+    const { guessNumbers, randomNumbers } = props;
+    const guesses = guessNumbers.split('');
+    const compareNums = randomNumbers.split('');
+
+    return compareNums.map((num, index) => {
+        if(num != guesses[index]) {
+            return <span className="wrong">{guesses[index]}</span>
+        } else {
+            return <span>{num}</span>;
+        }
+    });
+}
