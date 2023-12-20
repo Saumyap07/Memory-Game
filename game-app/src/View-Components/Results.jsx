@@ -13,12 +13,9 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
         
         // to do post high score to backend
         updateHighScores(newHighScore)
-        console.log(newHighScore)
         goToScoreBoard()
 
     }
-
-    console.log("Results component")
 
    
 
@@ -37,7 +34,6 @@ function Results({ guessNumbers, randomNumbers, handleWin, handleLose, score, le
     }
     if (guessNumbers != randomNumbers) {
         const showHighScoreDialog = !highScores[9]|| score > highScores[9];
-        console.log('lose view')
         return (
             <div className="Lose">
                 <h2>Number</h2>

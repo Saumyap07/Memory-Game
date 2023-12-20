@@ -1,19 +1,25 @@
 
 import './App.css';
 import Numbers from './Numbers';
+import { initializeApp } from 'firebase/app';
+import { collection, getFirestore } from 'firebase/firestore';
 import { useState } from "react";
 import Instructions from './View-Components/Instructions';
 import Remember from './View-Components/Remember';
 import InputComponent from './View-Components/InputComponent';
 import Results from './View-Components/Results';
 import ScoreBoard from './View-Components/ScoreBoard';
+import firebaseConfig from './notSecret';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { addDoc, serverTimestamp } from 'firebase/firestore';
 
-let MockHighscores = [
-  { name: 'Sam', level: 8, score: 550069 },
-  { name: 'Steve', level: 7, score: 550 },
-  { name: 'Jack', level: 5, score: 69 },
-  { name: 'Simon', level: 8, score: 5500 },
-]
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const HighscoresCollection = collection(db, 'Highscores')
+
+
 
 
 const genrateRandomNum = (digitNum) => {
@@ -31,10 +37,14 @@ function App() {
   const [guessNumbers, setGuessNumbers] = useState('1');
   const [score,setScore] = useState(0)
   const [level,setLevel] = useState(0)
-  const [highScores, setHighScores] = useState(MockHighscores);
+  const [highScores, loading, error] =useCollection(HighscoresCollection);
 
   const updateHighScores= (newHighScore)=>{
-    setHighScores(highScores => [...highScores,newHighScore])
+
+    addDoc(HighscoresCollection, {
+      createdAt: serverTimestamp(),
+      ...newHighScore
+    });
   }
   const onGuess = (userGuess) => {
     setGuessNumbers(userGuess)
@@ -73,7 +83,7 @@ setCurrentView("Instructions")
         score={score} level={level} randomNumbers={randomNumbers} goToScoreBoard={() => setCurrentView('ScoreBoard')}
         highScores={highScores} updateHighScores={updateHighScores}/>
       )}
-      {currentView === "ScoreBoard" && (
+      {currentView === "ScoreBoard" && !loading && (
         <ScoreBoard score={score} highScores={highScores} />
       )}
     </div>

@@ -1,8 +1,16 @@
 import { useState } from "react";
 
 
-function ScoreBoard({score, highScores}) {
-    console.log(highScores)
+function ScoreBoard({score, highScores,}) {
+    const highScoreData = highScores?.docs.map(doc => {
+        return {
+          id: doc.id,
+          ...doc.data()
+        }
+      });
+
+      highScoreData.sort((a, b) => b.score - a.score);
+
     return (
         <>
         <div>
@@ -18,11 +26,11 @@ function ScoreBoard({score, highScores}) {
                     <th>Level</th>
                 </tr>
 
-                {highScores.map((highScore, index) => (<tr>
+                {highScoreData.map((highscore, index) => (<tr>
                     <td>{index + 1}</td>
-                    <td>{highScore.name}</td>
-                    <td>{highScore.score}</td>
-                    <td>{highScore.level}</td>
+                    <td>{highscore.name}</td>
+                    <td>{highscore.score}</td>
+                    <td>{highscore.level}</td>
                 </tr>))}
             </tbody>
         </table>
