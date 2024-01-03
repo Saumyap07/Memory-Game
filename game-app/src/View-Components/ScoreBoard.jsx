@@ -35,7 +35,7 @@ function ScoreBoard({ score, highScores, handleLose, hideTryAgain = false }) {
                 </tbody>
             </table>
             {!hideTryAgain &&
-                <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Try Again</button>
+                <button className="Lose-btn" id="Lose-btn" onClick={handleLose}>Go to start</button>
             }
         </div>
 

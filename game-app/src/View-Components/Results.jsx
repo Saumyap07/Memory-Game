@@ -4,19 +4,19 @@ import { useEffect, useState } from "react"
 function Results({
     guessNumbers, randomNumbers,
     handleWin, handleLose, score, level,
-    goToScoreBoard, highScores, updateHighScores 
- }) {
+    goToScoreBoard, highScores, updateHighScores
+}) {
 
     const [playerName, setPlayerName] = useState("")
     const [showScoreboard, setShowScoreboard] = useState(false);
-    const [showHighScoreDialog, setShowHighScoreDialog]= useState(false);
+    const [showHighScoreDialog, setShowHighScoreDialog] = useState(false);
 
     function handleNewHighScore() {
         const newHighScore = {
-            name:playerName,
-            score,level
+            name: playerName,
+            score, level
         }
-        
+
         // to do post high score to backend
         updateHighScores(newHighScore)
         goToScoreBoard()
@@ -25,10 +25,9 @@ function Results({
     useEffect(() => {
         const lowestHighScore = highScores.docs[9]?.data();
         const shouldShowHighScore = highScores.docs.length < 10 || score > lowestHighScore.score;
-        console.log({lowestHighScore, shouldShowHighScore})
         setShowHighScoreDialog(shouldShowHighScore);
     }, [highScores, score])
-    
+
 
     if (guessNumbers == randomNumbers) {
         return (
@@ -44,8 +43,8 @@ function Results({
         )
     }
     if (guessNumbers != randomNumbers) {
-        
-       
+
+
         return (
             <div className="Lose">
                 <h2>Number</h2>
@@ -67,19 +66,14 @@ function Results({
                             onChange={e => setPlayerName(e.target.value)}
                             onKeyDown={(e) => {
                                 if (e.key == 'Enter') {
-                                  handleNewHighScore()
+                                    handleNewHighScore()
                                 }
-                              }}     
+                            }}
                         />
                         <button className="sumbit-btn" type="button" onClick={handleNewHighScore}>Sumbit</button>
                         <button className="No-btn" type="button" onClick={() => setShowHighScoreDialog(false)}>No Thankyou</button>
                     </dialog>
                 )}
-                {/* {showScoreboard && (
-          <div>
-            {goToScoreBoard}
-          </div>
-        )} */}
             </div>
         )
     }
@@ -95,7 +89,7 @@ function HasWrongAnswers(props) {
     const compareNums = randomNumbers.split('');
 
     return compareNums.map((num, index) => {
-        if(num != guesses[index]) {
+        if (num != guesses[index]) {
             return <span className="wrong">{guesses[index]}</span>
         } else {
             return <span>{num}</span>;

@@ -1,6 +1,7 @@
 import React from 'react'
+import Results from './Results'
 
-function Instructions({ handleClick, highScoreData, }) {
+function Instructions({ handleClick,goToScoreBoard}) {
   return (
     <div className="intructions">
       <h1>Memory Game</h1>
@@ -13,12 +14,9 @@ function Instructions({ handleClick, highScoreData, }) {
         <li>If you guess the numbers wrong you will have to restart the game.</li>
       </ul>
       <button className="start-btn" id="start-btn" onClick={handleClick}>Start</button>
-
+      <button className="Lose-btn" id="Lose-btn" onClick={goToScoreBoard}>Scoreboard</button>
     </div>
 
-
-
-  )
+)
 }
-
 export default Instructions

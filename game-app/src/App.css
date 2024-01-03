@@ -7,42 +7,43 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('Picture/Background.png');
 }
 
 .content-container {
   text-align: center;
   border: 3px solid white;
-  font-size: 40px;
+  font-size: calc(var(--font-size) * 1.666);
   background-image: url('Picture/blue.png');
   background-size: cover;
   background-position: center;
   padding: 1rem 2rem;
 }
-
 .removeBg {
   background-image: none;
   border: none;
 }
 
+.homePage {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 10px;
+}
+
+/* .homePage > * {
+  width: 100%;
+} */
+
 .intructions {
-  font-size: 24px;
   font-family: 'Ubuntu', sans-serif;
   background-image: url('Picture/blue.png');
   text-align: center;
   border: 3px solid white;
-  font-size: 40px;
+  font-size: calc(var(--font-size) * 1.666);
   background-size: cover;
   background-position: center;
-  max-width: 2000px;
-  width: 50vw;
   padding: 1rem 2rem;
-}
-
-.homePage {
-  display: flex;
-  gap: 10px;
 }
 
 .scoreBoard {
@@ -51,13 +52,66 @@
   padding: 20px;
   background-image: url('Picture/ScoreBoard.png');
   text-align: center;
+
+
+
+}
+@media (max-width: 580px) {
+  :root {
+    --font-size: 12px;
+  }
+}
+/*/ on larger screens */
+ @media (max-width:1220px) {
+
+  .intructions {
+    width: 66.5vw;
+    font-size: calc(var(--font-size) * 0.8333)
+  }
+
+  .scoreBoard {
+  background-color: yellow;
+  border: 3px solid white;
+  padding: 20px;
+  background-image: url('Picture/ScoreBoard.png');
+  text-align: center;
+  }
+  .homePage .scoreBoard{
+    display: none;
+  }
+  .content-container {
+    text-align: center;
+    border: 3px solid white;
+    font-size: calc(var(--font-size) * 1.25);
+    background-image: url('Picture/blue.png');
+    background-size: cover;
+    background-position: center;
+    padding: 1rem 2rem;
+    text-wrap: wrap ;
+  }
+  .removeBg {
+    background-image: none;
+    border: none;
+  }
+  /* .input {
+    width: 30rem;
+    padding: 10px;
+    margin-bottom: 1rem;
+    color: black;
+    font-size: 20px;
+  } */
+  
+}
+
+.scoreBoard table {
+  height: fit-content;
 }
 
 
 .start-btn {
   background: var(--Amber);
   border-color: var(--Amber);
-  font-size: 24px;
+  font-size: var(--font-size);
   margin: 15px 8px;
   letter-spacing: 1px;
   padding: 6px 12px;
@@ -78,7 +132,7 @@
 
 .guess h2 {
   line-height: 0;
-  margin: 3rem;
+  margin: 3rem 0;
 }
 
 .guess h4 {
@@ -91,21 +145,17 @@
 }
 
 .input {
-  width: 30rem;
+  width: 69%;
   padding: 10px;
   margin-bottom: 1rem;
   color: black;
-  font-size: 20px;
-}
-
-.random {
-  font-size: 20px;
+  font-size: calc(var(--font-size) * 0.8333);
 }
 
 .Win-btn {
   background: var(--Amber);
   border-color: var(--Amber);
-  font-size: 24px;
+  font-size: var(--font-size);
   margin: 15px 8px;
   letter-spacing: 1px;
   padding: 6px 12px;
@@ -120,7 +170,7 @@
 .Lose-btn {
   background: var(--Amber);
   border-color: var(--Amber);
-  font-size: 24px;
+  font-size: var(--font-size);
   margin: 15px 8px;
   letter-spacing: 1px;
   padding: 6px 12px;
@@ -135,14 +185,12 @@
 .timer-bar {
   height: 10px;
   background-color: var(--Red);
-  /* Set your desired background color */
   transition: width 1s linear;
-  /* Add a transition for smooth animation */
   border-radius: 5px;
 }
 
 .random {
-  font-size: 70px;
+  font-size: calc(var(--font-size) * 2.91666);
 }
 
 ul {
@@ -163,13 +211,13 @@ tbody {
   background-color: white;
 }
 
-th,
-td {
+th,td {
   border: px solid black;
-  font-size: 20px;
+  font-size: calc(var(--font-size) * 0.8333);
   padding: 20px;
   text-align: center;
   color: black;
+  max-height: 600px;
 }
 
 .board {
@@ -196,7 +244,7 @@ dialog::backdrop {
 .sumbit-btn {
   background: var(--Amber);
   border-color: var(--Amber);
-  font-size: 24px;
+  font-size: var(--font-size);
   margin: 15px 8px;
   letter-spacing: 1px;
   padding: 6px 12px;
@@ -207,7 +255,7 @@ dialog::backdrop {
 .No-btn {
   background: var(--Amber);
   border-color: var(--Amber);
-  font-size: 24px;
+  font-size: var(--font-size);
   margin: 15px 8px;
   letter-spacing: 1px;
   padding: 6px 12px;

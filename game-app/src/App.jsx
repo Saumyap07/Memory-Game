@@ -75,7 +75,7 @@ function App() {
     <div className={`content-container  ${currentView === "Instructions" && "removeBg"} ${currentView === "ScoreBoard" && "board"}`}>
       {currentView === "Instructions" && (
         <div className='homePage'>
-          <Instructions handleClick={() => setCurrentView("Remember")} />
+          <Instructions handleClick={() => setCurrentView("Remember")} goToScoreBoard={() => setCurrentView('ScoreBoard')} />
           <ScoreBoard score={score} highScores={highScores} handleLose={onLose} hideTryAgain={true} />
         </div>
       )}

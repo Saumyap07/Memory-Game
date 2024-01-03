@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Timer = ({ totalTime, handleTimeUp }) => {
-  const [timeLeft, setTimeLeft] = useState(totalTime-1);
+  const [timeLeft, setTimeLeft] = useState(totalTime - 1);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,13 +13,13 @@ const Timer = ({ totalTime, handleTimeUp }) => {
     };
   }, []);
   useEffect(() => {
-    if(timeLeft == -1){
+    if (timeLeft == -1) {
       handleTimeUp()
     }
 
-  },[timeLeft])
+  }, [timeLeft])
 
-  const timerWidth = (timeLeft / (totalTime -1)) * 100;
+  const timerWidth = (timeLeft / (totalTime - 1)) * 100;
 
   return (
     <div>
@@ -33,4 +33,3 @@ const Timer = ({ totalTime, handleTimeUp }) => {
 
 export default Timer;
 
-  
